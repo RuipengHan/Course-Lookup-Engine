@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Class manager</title>
+</head>
+<body>
+    <div class="add" style="text-align: justify">
+        <h1>Add Course</h1>
+        <div class="user form">
+            <form action="/" method="POST">
+                <h4>Course information</h4>
+                <div class="question">
+                  <label>Course Number</label> 
+                  <input type="number" name = "number" id = "number" required/>
+                  <label>Subject</label>
+                  <input type="text" name = "subject" id = "subject" required/>
+                  <label>Title</label>
+                  <input type="text"  name = "title" id = "title" required/>
+                  <label>Description</label>
+                  <input type="text" name = "description" id = "description"required/>
+                  <input type="submit" value="Add class"><br>
+                </div>
+            </form>
+        </div>
+    </div>
+ 
+    <div class="Search" style="text-align: justify">
+        <h1>Search Course to Start</h1>
+        <div class="user form">
+            <form action="/search" method="POST">
+                <div class="question">
+                    <label>Subject</label>
+                    <input type="text" name = "search name" id = "search name" required/>
+                    <label>Course Number</label>
+                    <input type="number" name = "search number" id = "search number" required/>
+                    <input type="submit" value="search"><br>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if courses %}
+    <table>
+        <tr>
+            <th>Course Subject</th>
+            <th>Course Number</th>
+            <th>Course Title</th>
+            <th>Course Description</th>
+        </tr>
+        {% for course in courses %}
+            <tr>
+                <td>{{ course.subject }}</td>
+                <td>{{ course.course_number }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.description }}</td>
+            </tr>
+    </table>
+        <a href="/delete/{{course.id}}">Delete</a> &nbsp;
+        <a href="/update/{{course.id}}">Update</a> 
+        <br>
+        <a href="/rate_course/{{course.id}}">Rate</a> &nbsp;
+        <a href="/comment_course/{{course.id}}">Comment</a>
+        <br>
+        <a href="/view_rate/{{course.id}}">View Rate</a> &nbsp;
+        <a href="/view_comments/{{course.id}}">View Comments</a>
+        <br>
+        <a href="/view_sections/{{course.id}}">View Sections</a>
+        {% endfor %}
+    {% endif %}
+    
+    <br>
+    <h4>fun fact</h4>
+    <div class="Adcanced" style="text-align: justify">
+    <a href="/query1">Query1</a > <a>all the comments that CS241 and CS233 have <a>
+        <br>
+        <a href="/query2">Query2</a > <a>all courses that have better average cs courses reputation</a >
+    </div>
+</body>
+</html>

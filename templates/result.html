@@ -1,0 +1,23 @@
+<html> 
+	<head>
+	</head>
+	
+	<body>
+    <table>
+      <tr>
+          <th>Course Subject</th>
+          <th>Course Number</th>
+          <th>Course comment</th>
+    </tr>
+    {% for comment in comments %}
+        <tr>
+          <td>{{ comment.subject}}</td>
+          <td>{{ comment.course_number }}</td>
+          <td>{{ comment.comment }}</td>
+       </tr>
+    {% endfor %}
+    </table>
+
+    </body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Class manager</title>
+</head>
+<body>
+    <div class="update" style="text-align: justify">
+        <h1>Update Course</h1>
+        <div class="class form">
+            <form action="/update/{{id}}" method="POST">
+                <h4>Course information</h4>
+                <div class="question">
+                {%for course in courses%}
+                  <label>Subject</label>
+                  <input type="text" value = "{{course.subject}}" name = "subject" id = "subject" required/>  
+                  <label>Course Number</label> 
+                  <input type="number" value = {{course.course_number}} name = "number" id = "number" required/>
+                  <label>Title</label>
+                  <input type="text"  value = "{{course.title}}" name = "title" id = "title" required/>
+                  <label>Description</label>
+                  <input type="text" value = "{{course.description}}" name = "description" id = "description" required/>
+                  <input type="submit" value="Update class"><br>
+                {%endfor%}
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

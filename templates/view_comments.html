@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Feedback Form in HTML Example </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <meta name="author" content="Codeconvey" />
+</head>
+<body>
+<header class="ScriptHeader">
+    {%for course in courses%}
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1>Comment For {{course.subject}} {{course.course_number}}, {{course.title}}</h1>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</header>
+<div class="show_comments" style="text-align: justify">
+{% if courses %}
+    <table>
+        <tr>
+            <th>Commenter</th>
+            <th>Comments</th>
+        </tr>
+        {% for comment in comments %}
+            <tr>
+                <td><b>User</b>: {{ comment.user_name }} <br> <b>Commented on:</b> {{comment.comment_time}}</td>
+                <td>{{ comment.comment }}</td>
+            </tr>
+        {%endfor%}    
+    </table>
+{% endif %}
+</div>    
+</body>
+</html>

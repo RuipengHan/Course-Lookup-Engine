@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Feedback Form in HTML Example </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <meta name="author" content="Codeconvey" />
+</head>
+<body>
+<header class="ScriptHeader">
+    {%for course in courses%}
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1>Rate For {{course.subject}} {{course.course_number}}, {{course.title}}</h1>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</header>
+<div class="show_comments" style="text-align: justify">
+{% if courses %}
+    <table>
+        <tr>
+            <th>Rater</th>
+            <th>Ratings</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+                <td><b>User</b>: {{ result.user_name }}</td>
+                <td><b>overall_quality</b>: {{ result.overall_quality }}</td>
+                <td><b>professor</b>: {{ result.professor }}</td>
+                <td><b>workload</b>: {{ result.workload }}</td>
+                <td><b>rubric</b>: {{ result.rubric }}</td>
+                <td><b>difficulty</b>: {{ result.difficulty }}</td>
+                <td><b>grade_Rceived</b>: {{ result.grade_Rceived }}</td>
+            </tr>
+        {%endfor%}    
+    </table>
+{% endif %}
+</div>    
+<div class="show_review" style="text-align: justify">
+{% if rates %}
+    <!-- {% for rate in rates %} -->
+    <p>There are 6 rates for {{rate.subject}} {{rate.course_number}}</p> 
+    <label for="overall_quality">overall quality:</label>
+    <progress id="overall_quality" value={{rate.avg_quality}} max=10></progress> {{rate.avg_quality}}/10
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="professorrate">overall professor rate:</label>
+    <progress id="professorrate" value={{rate.avg_prof}} max=10></progress> {{rate.avg_prof}}/10
+    <br>
+    <label for="workloadrate">overall workload rate:</label>
+    <progress id="workloadrate" value={{rate.avg_work}} max=10></progress> {{rate.avg_work}}/10
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="rubicrate">overall rubic rate:</label>
+    <progress id="rubicrate" value={{rate.avg_rubric}} max=10></progress> {{rate.avg_rubric}}/10
+    <br>
+    <label for="difficultrate">overall difficulty rate:</label>
+    <progress id="difficultrate" value={{rate.avg_diff}} max=10></progress> {{rate.avg_diff}}/10
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="avgGrade">average Grade:</label>
+    <progress id="avgGrade" value={{rate.avg_gpa}} max=4></progress> {{rate.avg_gpa}}/4
+    <!-- {%endfor%}    -->
+{% endif %}
+</div>  
+</body>
+</html>

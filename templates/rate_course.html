@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Feedback Form in HTML Example </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <meta name="author" content="Codeconvey" />
+    
+
+</head>
+<body>
+		
+<header class="ScriptHeader">
+    {%for course in courses%}
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1>Comments For {{course.subject}} {{course.course_number}}, {{course.title}}</h1>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</header>
+
+<section>
+    <div class="rt-container">
+          <div class="col-rt-12">
+              <div class="Scriptcontent">
+              
+       
+<div class="feedback">
+
+<h4> Please rate your course experience for the following parameters</h4>
+
+<form method="post" action="/rate_course/{{id}}">
+<label>1. Overall_quality</label><br>
+  
+<span class="star-rating">
+    <i> poor</i>  
+    <input type="radio" name="overall_quality" id="overall_quality" value="1" required>
+    <input type="radio" name="overall_quality" id="overall_quality" value="2">
+    <input type="radio" name="overall_quality" id="overall_quality" value="3">
+    <input type="radio" name="overall_quality" id="overall_quality" value="4">
+    <input type="radio" name="overall_quality" id="overall_quality" value="5">
+    <input type="radio" name="overall_quality" id="overall_quality" value="6">
+    <input type="radio" name="overall_quality" id="overall_quality" value="7">
+    <input type="radio" name="overall_quality" id="overall_quality" value="8">
+    <input type="radio" name="overall_quality" id="overall_quality" value="9">
+    <input type="radio" name="overall_quality" id="overall_quality" value="10"><i>best</i>
+</span>
+
+  <div class="clear"></div> 
+  <hr class="survey-hr">
+<label> 2. How do you think about the professor</label><br>
+<span class="star-rating">
+    <i> poor</i>  
+  <input type="radio" name="professor" id="professor" value="1" required>
+  <input type="radio" name="professor" id="professor" value="2">
+  <input type="radio" name="professor" id="professor" value="3">
+  <input type="radio" name="professor" id="professor" value="4">
+  <input type="radio" name="professor" id="professor" value="5">
+  <input type="radio" name="professor" id="professor" value="6">
+  <input type="radio" name="professor" id="professor" value="7">
+  <input type="radio" name="professor" id="professor" value="8">
+  <input type="radio" name="professor" id="professor" value="9">
+  <input type="radio" name="professor" id="professor" value="10"><i>best</i>
+</span>
+
+
+  <div class="clear"></div> 
+  <hr class="survey-hr">
+<label> 3. What's about the workload of the course?</label><br><br/>
+<span class="star-rating">
+    <i> low</i>  
+    <input type="radio" name="workload" id="workload" value="1" required>
+    <input type="radio" name="workload" id="workload" value="2">
+    <input type="radio" name="workload" id="workload" value="3">
+    <input type="radio" name="workload" id="workload" value="4">
+    <input type="radio" name="workload" id="workload" value="5">
+    <input type="radio" name="workload" id="workload" value="6">
+    <input type="radio" name="workload" id="workload" value="7">
+    <input type="radio" name="workload" id="workload" value="8">
+    <input type="radio" name="workload" id="workload" value="9">
+    <input type="radio" name="workload" id="workload" value="10"><i>high</i>
+</span>
+
+<div class="clear"></div> 
+<hr class="survey-hr">
+<label> 4. What's about the fairness of the course rubic?</label><br><br/>
+<span class="star-rating">
+  <i> poor</i>  
+  <input type="radio" name="rubric" id="rubric" value="1" required>
+  <input type="radio" name="rubric" id="rubric" value="2">
+  <input type="radio" name="rubric" id="rubric" value="3">
+  <input type="radio" name="rubric" id="rubric" value="4">
+  <input type="radio" name="rubric" id="rubric" value="5">
+  <input type="radio" name="rubric" id="rubric" value="6">
+  <input type="radio" name="rubric" id="rubric" value="7">
+  <input type="radio" name="rubric" id="rubric" value="8">
+  <input type="radio" name="rubric" id="rubric" value="9">
+  <input type="radio" name="rubric" id="rubric" value="10"><i>fair</i>
+</span>
+  
+<div class="clear"></div> 
+<hr class="survey-hr">
+<label> 5. What's about the difficulty of the course materials?</label><br><br/>
+<span class="star-rating">
+  <i> low</i>  
+  <input type="radio" name="difficulty" id="difficulty" value="1" required>
+  <input type="radio" name="difficulty" id="difficulty" value="2">
+  <input type="radio" name="difficulty" id="difficulty" value="3">
+  <input type="radio" name="difficulty" id="difficulty" value="4">
+  <input type="radio" name="difficulty" id="difficulty" value="5">
+  <input type="radio" name="difficulty" id="difficulty" value="6">
+  <input type="radio" name="difficulty" id="difficulty" value="7">
+  <input type="radio" name="difficulty" id="difficulty" value="8">
+  <input type="radio" name="difficulty" id="difficulty" value="9">
+  <input type="radio" name="difficulty" id="difficulty" value="10"><i>high</i>
+</span>
+
+<div class="clear"></div> 
+<hr class="survey-hr">
+<label for="grades"> 6. Grade Received</label>
+  <select id="grade_Rceived" name="grade_Rceived" required>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="F">F</option>
+  </select>
+  <div class="clear"></div> 
+<input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit" value="Submit your review" onclick="return confirm('Are you sure?')" >&nbsp;
+
+</form>
+                  </div>
+    		</div>
+		</div>
+    </div>
+</section>
+</html>

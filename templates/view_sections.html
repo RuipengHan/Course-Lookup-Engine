@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title> Sections</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <meta name="author" content="Codeconvey" />
+</head>
+<body>
+<header class="ScriptHeader">
+    {%for course in courses%}
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1>Sections of {{course.subject}} {{course.course_number}}, {{course.title}}</h1>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</header>
+<div class="show_review" style="text-align: justify">
+{% if sections %}
+<table>
+    <tr>
+        <th>CRN</th>
+        <th>Number of Student</th>
+        <th>Year of Section</th>
+        <th>Semester</th>
+        <th>Professor</th>
+        <th>Course Average GPA</th>
+    </tr>
+    {% for section in sections %}
+    <tr>
+        <td>{{ section.crn }}</td>
+        <td>{{ section.students_count }}</td>
+        <td>{{ section.year }}</td>
+        <td>{{ section.semester }}</td>
+        <td>{{ section.professor }}</td>
+        <td>{{ section.average_gpa }}</td>
+    </tr>
+    {%endfor%}   
+</table>
+    
+
+{% endif %}
+</div>    
+</body>
+</html>

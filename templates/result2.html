@@ -1,0 +1,21 @@
+<html> 
+	<head>
+	</head>
+	
+	<body>
+    <table>
+      <tr>
+          <th>Course Subject</th>
+          <th>Course quality</th>
+    </tr>
+    {% for comment in comments %}
+        <tr>
+          <td>{{ comment.subject}}</td>
+          <td>{{ comment.average_quality }}</td>
+       </tr>
+    {% endfor %}
+    </table>
+
+    </body>
+
+</html>
